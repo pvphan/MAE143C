@@ -1,8 +1,6 @@
 # MAE143C
 
-_
-UCSD - MAE 143C - Digital Control Systems (Fall 2013), Instructor: Prof. Thomas Bewley
-_
+_UCSD - MAE 143C - Digital Control Systems (Fall 2013), Instructor: Prof. Thomas Bewley_
 
 Examples and homework by student Paul Vinh Phan, Fall 2013.
 
