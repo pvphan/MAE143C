@@ -98,6 +98,7 @@ disp('Coefficients for difference equation:')
 figure(1); g.K=logspace(-1.5,1.5,400);
 % g.axes=[-1.5 1.5 -1.5 1.5]; RLocus(numG1_DT,denG1_DT,numD1a_DT,denD1a_DT,g); % print -depsc figs/final_143b_13_1a.eps
 g.axes=[-25 25 -25 25]; RLocus(numG1,denG1,numD1a,denD1a,g); % D1a
+print -depsc figs/rlocus_inner.eps
 
 % Problem #1b
 figure(2); g.omega=logspace(-1.5,2.5,400); g.line=0;
@@ -107,6 +108,7 @@ g.style='r--'; Bode(PolyConv(numG1,numD1a),PolyConv(denG1,denD1a),g);
 g.style='m-.'; Bode(PolyConv(numG1,numD1b),PolyConv(denG1,denD1b),g);
 subplot(2,1,1); axis([10^(-1.5) 10^(2.5) 10^(-2.5) 10^(1.5)])
 subplot(2,1,2); axis([10^(-1.5) 10^(2.5) -180 -90]); % print -depsc figs/final_143b_13_1b.eps
+print -depsc figs/bode_inner.eps
 
 % Problem #1c
 numH1 =PolyConv(numG1,numD1);  denH1 =PolyAdd(PolyConv(numG1,numD1), PolyConv(denG1,denD1));
@@ -120,7 +122,8 @@ P=denH1(end-1)/numH1(end-1);  Pa=denH1a(end-1)/numH1a(end-1),  Pb=P;
 g.T=1.2; g.h=Ts; g.styleu='k-'; figure(3)
 g.styley='b-';  ResponseTF(P*numH1,  denH1, 1,g); hold on; axis([0 1.2 0 1.4]);
 g.styley='r--'; ResponseTF(Pa*numH1a,denH1a,1,g); hold on;
-g.styley='m-.'; ResponseTF(Pb*numH1b,denH1b,1,g); % print -depsc figs/final_143b_13_1e.eps
+g.styley='m-.'; ResponseTF(Pb*numH1b,denH1b,1,g); 
+print -depsc figs/response_untuned.eps
 
 %% Set up various controllers for problem #2: %%
 
@@ -159,6 +162,8 @@ disp('Coefficients for difference equation:'), disp('')
 % Problem #2a - Root Locus Outter Loop
 figure(4); g.K=logspace(-1.5,3,800); g.axes=[-2*z1 2*z1 -2*z1 2*z1];
 RLocus(numG2,denG2,numD2a,denD2a,g); % print -depsc figs/final_143b_13_2a.eps
+print -depsc figs/rlocus_outter.eps
+
 % figure(5); g.K=logspace(-1.5,3,800); g.axes=[-1.5 1.5 -1.5 1.5];
 % RLocus(numG2_DT,denG2_DT,numD2_DT,denD2_DT,g); % print -depsc figs/final_143b_13_2a.eps
 
@@ -169,6 +174,7 @@ g.style='b-';  Bode(PolyConv(numG2,numD2), PolyConv(denG2,denD2),g);
 g.style='r--'; Bode(PolyConv(numG2,numD2a),PolyConv(denG2,denD2a),g);
 subplot(2,1,1); axis([10^(-2.5) 10^(2.5) 10^(-2) 10^(4)]);
 subplot(2,1,2); axis([10^(-2.5) 10^(2.5) -180 -90]); % print -depsc figs/final_143b_13_2b.eps
+print -depsc figs/bode_outter.eps
 
 % Problem #2c
 numH2 =PolyConv(numG2,numD2);  denH2 =PolyAdd(PolyConv(numG2,numD2), PolyConv(denG2,denD2));
@@ -179,6 +185,7 @@ g.T=10; g.h=Ts; g.styleu='k-'; figure(6)
 P2=denH2(end-1)/numH2(end-1); P2a=denH2a(end-1)/numH2a(end-1);
 g.styley='b-';  ResponseTF(P2*numH2,denH2,1,g)
 hold on, g.styley='r--'; ResponseTF(numH2a,denH2a,1,g), % print -depsc figs/final_143b_13_2e.eps
+print -depsc figs/response_tuned.eps
 
 % % Problem #4b
 % numH2full=PolyConv(numG2,Pb*numH1b,numD2);
